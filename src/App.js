@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Inventory from "./components/Inventory/Inventory";
 import Login from "./components/login-user/Login/Login";
+import Footer from "./components/shared/Footer/Footer";
 import Header from "./components/shared/Header/Header";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+      <Footer />
     </>
   );
 };
