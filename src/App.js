@@ -1,10 +1,16 @@
 import React from 'react';
+import {Route, Routes} from "react-router-dom"
+import Home from './components/Home/Home';
+import Login from './components/login-user/Login/Login';
 
 const App = () => {
   return (
-    <div>
-      <h1>Welcome to fruits warehose management</h1>
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </>
   );
 };
 
