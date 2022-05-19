@@ -19,8 +19,8 @@ const Header = () => {
                 />
               </Link>
               {/* <!-- Left links Start --> */}
-                <CustomLink class="mr-2 py-1 px-2" to="/dashboard">
-                    Dashboard
+                  <CustomLink class="mr-2 py-1 px-2" to="/">
+                    Home
                   </CustomLink>
                 <CustomLink class="mr-2 py-1 px-2" to="/inventory">
                     Inventory
