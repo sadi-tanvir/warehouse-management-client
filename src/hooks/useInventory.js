@@ -6,8 +6,9 @@ const useInventory = () => {
 
    useEffect(() => {
        const getInventor = async () =>{
-           const res = await axios.get('fruits.json')
-           setFruits(res.data);
+           const res = await axios.get('http://localhost:5000/inventory')
+           setFruits(res.data.inventory);
+           console.log(res.data.inventory);
        }
        getInventor()
    },[])
