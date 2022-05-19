@@ -1,9 +1,24 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const InventoryDetails = () => {
+    // state
+    const [fruit, setFruit] = useState({})
+
+    const { _id, name, img, description, quantity, price, supplier } = fruit;
     // router
     const {inventoryId} = useParams()
+
+    // getting data from server
+    useEffect(() =>{
+        const getSingleInventory = async () =>{
+            const url = `http://localhost:5000/inventory/item?id=${inventoryId}`
+            const res = await axios.get(url)
+            setFruit(res.data.inventoryItem);
+        }
+        getSingleInventory()
+    })
 
   return (
     <>
@@ -12,27 +27,24 @@ const InventoryDetails = () => {
           <div className="rounded-lg shadow-lg bg-white">
             <img
               className="rounded-t-lg px-2 py-2 mx-auto"
-              src="https://i.ibb.co/6y4tRSv/mango.jpg"
-              alt=""
+              src={img}
+              alt="fruit pic"
             />
             <div className="p-6">
               <h5 className="text-gray-900 text-xl font-medium mb-1">
-                {inventoryId}
+                {name}
               </h5>
               <h6 className="text-gray-900 text-xl font-medium mb-1">
-                Stock: 300 kg
+                Stock: {quantity} kg
               </h6>
               <p className="text-gray-900 text-lg font-medium mb-1">
-                Price: 500 tk
+                Price: {price} tk
               </p>
               <small className="block font-bold mb-2">
-                supplier: abdullah mamun
+                supplier: {supplier}
               </small>
               <p className="text-gray-700 text-base">
-                An immensely popular mango from Rajshahi which is considered to
-                be the most superior of all mango in Bangladesh.. The inside
-                color of this mango is yellow and orange. Does not have any
-                fiber and very much tasty to eat. Medium size.
+                {description}
               </p>
               <button
                 type="button"
