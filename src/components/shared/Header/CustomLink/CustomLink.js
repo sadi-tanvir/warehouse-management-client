@@ -7,7 +7,7 @@ function CustomLink({ children, to, ...props }) {
 
 
     const styleNave = {
-      color:match ? '#0369a1':'#334155',
+      color:match ? '#334155':'#15803d',
       textDecoration: 'none',
       fontWeight: 'bold',
       fontSize: match ?'19px' :'17px'

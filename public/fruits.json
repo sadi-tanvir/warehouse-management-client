@@ -1,0 +1,50 @@
+[
+    {
+        "name":"Mango Himshagor",
+        "img": "https://i.ibb.co/6y4tRSv/mango.jpg",
+        "description": "An immensely popular mango from Rajshahi which is considered to be the most superior of all mango in Bangladesh.. The inside color of this mango is yellow and orange. Does not have any fiber and very much tasty to eat. Medium size.",
+        "quantity": 300,
+        "price":"400",
+        "supplier":"abdullah mamun"
+    },
+    {
+        "name":"Malta ± 50 gm",
+        "img": "https://i.ibb.co/Jv6x15F/malta.png",
+        "description": "Malta, a variety of orange, is a popular citrus fruit cultivated in hot climate. The fruit is rich in mineral salts and other ingredients of nutritive value such as iron, lime, phosphorus, and vital minerals.Malta is loaded with vitamin C and vitamin B complex. It is a round-shaped, medium-sized fruit, weighting an average of 145.8 gm. It has a rough-surfaced orange ringed with a segment of around 9.67 centimeters and a sweet-tasting juice content of around 33.7 per cent.The fruit is often used to make processed juice, jam, jelly and marmalade.",
+        "quantity": 700,
+        "price":"600",
+        "supplier":"Farid Uddin"
+    },
+    {
+        "name":"Shagor Kola (Banana Sagor)",
+        "img": "https://i.ibb.co/YhtdZCz/bananas.png",
+        "description": "Banana is the most popular fresh fruit in all over the world. It has lots of variety. Chompa Banana is one of them. Chompa Bananas are comparatively smaller than the normal bananas. Bananas are great super food which provides us with energy, make us feel full and provide our body with essential nutrients and high amount of fiber. Banana is one of the high calorie tropical fruits. 100 grams of its flesh carries 90 calories. Besides, it contains good amount of health benefiting fiber, anti-oxidants, minerals, and vitamins. Bananas could help you to feel happier as they contain tryptophan, a type of protein that the body converts into serotonin, known to promote relaxation and improve mood.",
+        "quantity": 400,
+        "price":"200",
+        "supplier":"Rafiqul Islam"
+    },
+    {
+        "name":"Guava Premium (± 50 gm)",
+        "img": "https://i.ibb.co/tZWkP0S/guava.png",
+        "description": "Guava is a tropical fruit rich in high-profile nutrients. Thai guavas are generally the size of a softball with apple green skin that can range from bumpy to smooth. The flesh is white with pale yellow seeds and tends to be drier than the pink type of guavas. Thai guavas are only mildly sweet and have very little fragrance. The crunchy flesh and hard seeds are both edible. Guavas come in two broad groups divided by the color of their flesh: pink and white. Thai guavas are a group of guavas within the white category that include a number of varieties. Thai Guava Guava is very helpful for those who want to lose weight without compromising their intake of proteins, vitamins and fiber. Guava is very high in roughage and rich in vitamins, proteins and minerals Adding a medium-sized guava to your lunch and you will not feel hungry again until the evening.",
+        "quantity": 430,
+        "price":"320",
+        "supplier":"Farid Uddin"
+    },
+    {
+        "name":"Dalim (Pomegranate)",
+        "img": "https://i.ibb.co/DD9Qr3S/dalim.png",
+        "description": "Pomegranate fruit is one of the most popular, nutritionally rich fruit with unique flavor, taste, and health promoting characteristics. The fruit is moderate in calories, holds about 83 calories per 100 grams; slightly more than that of in the apples. It contains no cholesterol or saturated fats. It is a good source of soluble and insoluble dietary fibers; providing about 4 grams per 100 g (about 12% of RDA). Dietary fiber aid in smooth digestion and bowel movements. The fruit is an also good source of antioxidant vitamin-C, provides about 17% per 100 g of daily requirement. Consumption of fruits rich in vitamin C helps the body develop resistance against infectious agents by boosting immunity. Pomegranate seeds make an attractive garnish on salads and dishes and fresh fruits make fantastic refreshing juice. Pomegranate juice can be employed to prepare soups, jellies, sorbets, sauces as well as to flavor cakes, baked apples and other desserts.",
+        "quantity": 530,
+        "price":"270",
+        "supplier":"Nazim Uddin"
+    },
+    {
+        "name":"Anaros (Pineapple)",
+        "img": "https://i.ibb.co/HKL3ytt/anarosh.png",
+        "description": "Pineapples are one of the most popular tropical fruits in the world.Fresh pineapple is low in calories. Nonetheless, it is a storehouse for several unique health promoting compounds, minerals and vitamins that are essential for optimum health. Fresh pineapples contain 50 calories per 100 grams, which amounts to only 83 calories per cup (165 grams). They consist of water (86%) and carbs (13%), with almost no protein or fat.The oval to cylindrical-shaped, compound fruit develops from many small fruits fused together. It is both juicy and fleshy with the stem serving as the fibrous core. The tough, waxy rind may be dark green, yellow, orange-yellow or reddish when the fruit is ripe. The flesh ranges from nearly white to yellow. In size the fruits are up to 12 inches long and weight 1 to 10 pounds or more. Pineapples are delicious when consumed fresh, but they can also be enjoyed as juice, dried, canned, or as an ingredient in various recipes.",
+        "quantity": 670,
+        "price":"300",
+        "supplier":"Rakib Mia"
+    }
+]

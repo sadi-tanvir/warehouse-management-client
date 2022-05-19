@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <>
       <header
-        class="w-full flex justify-center items-center shadow-lg bg-gray-100 fixed">
+        class="w-full flex justify-center items-center shadow-lg bg-gray-100">  {/* sticky */}
         <nav class=" relative w-11/12 flex flex-wrap items-center justify-between py-3 text-gray-500 navbar navbar-expand-lg navbar-light">
           <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
             <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
@@ -22,8 +22,8 @@ const Header = () => {
                 <CustomLink class="mr-2 py-1 px-2" to="/dashboard">
                     Dashboard
                   </CustomLink>
-                <CustomLink class="mr-2 py-1 px-2" to="/login">
-                    Login
+                <CustomLink class="mr-2 py-1 px-2" to="/inventory">
+                    Inventory
                   </CustomLink>
                 <CustomLink class="mr-2 py-1 px-2" to="/login">
                     Login
