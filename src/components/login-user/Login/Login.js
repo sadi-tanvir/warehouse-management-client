@@ -1,7 +1,7 @@
 import React from "react";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import classes from "./Login.module.css"
-import looog from "../../../images/large_thumbnail -2.jpg"
+import classes from "../../../styles/style.module.css"
+import login from "../../../images/large_thumbnail -2.jpg"
 
 const Login = () => {
   return (
@@ -11,7 +11,7 @@ const Login = () => {
           <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
             <div className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
               <img
-                src={looog}
+                src={login}
                 className="w-full rounded-lg"
                 alt="Login img"
               />

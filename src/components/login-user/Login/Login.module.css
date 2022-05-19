@@ -1,9 +1,0 @@
-.input_field {
-    border-bottom: 2px solid #15803d;
-    transition: 3 
-}
-.input_field:focus {
-    border-left: none;
-    border-bottom: 3px solid #15803d;
-    transition: 3px 
-}
