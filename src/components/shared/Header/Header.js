@@ -2,8 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CustomLink from "./CustomLink/CustomLink";
 import Profile from "./Dropdown/Profile";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from 'firebase/auth';
+import auth from "../../../firebase.init";
+import Button from "../re-usable-component/Button";
 
 const Header = () => {
+  // firebase
+  const [user, loading, error] = useAuthState(auth);
+
   return (
     <>
       <header className="w-full shadow-lg bg-gray-100 flex justify-center items-center">
@@ -23,18 +30,27 @@ const Header = () => {
             <CustomLink className=" ml-2 md:ml-5" to="/inventory">
               Inventory
             </CustomLink>
-            <CustomLink className=" ml-2 md:ml-5" to="/login">
-              Login
+            <CustomLink className=" ml-2 md:ml-5" to="/others">
+              others
             </CustomLink>
             <div className="dropdown relative ml-2 md:ml-5">
               <Profile />
             </div>
-            <CustomLink className=" ml-2 md:ml-5" to="/register">
-              Register
-            </CustomLink>
-            <CustomLink className=" ml-2 md:ml-5" to="/login">
-              Login
-            </CustomLink>
+
+            {user ? (
+              <Button onClick={() => signOut(auth)} btnClass="inline-block px-6 ml-3" btnColor="slate">
+                Logout
+              </Button>
+            ) : (
+              <>
+                <CustomLink className=" ml-2 md:ml-5" to="/register">
+                  Register
+                </CustomLink>
+                <CustomLink className=" ml-2 md:ml-5" to="/login">
+                  Login
+                </CustomLink>
+              </>
+            )}
           </div>
         </nav>
       </header>

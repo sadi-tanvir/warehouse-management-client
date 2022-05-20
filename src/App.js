@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import Inventory from "./components/Inventory/Inventory";
 import InventoryDetails from "./components/Inventory/InventoryDetails/InventoryDetails";
 import Login from "./components/login-user/Login/Login";
+import Register from "./components/login-user/Register/Register";
 import Footer from "./components/shared/Footer/Footer";
 import Header from "./components/shared/Header/Header";
 
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <Footer />
     </>
