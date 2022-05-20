@@ -11,7 +11,7 @@ const useInventory = () => {
            console.log(res.data.inventory);
        }
        getInventor()
-   },[])
+   },[fruits])
 
    return [fruits, setFruits]
 };
