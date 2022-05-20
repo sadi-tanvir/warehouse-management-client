@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios"
+import { useSelector } from "react-redux";
 
 const useInventory = () => {
-   const [fruits, setFruits] = useState([])
+    const [fruits, setFruits] = useState([])
+    const {isChange} = useSelector((state) => state.globalReducer);
 
    useEffect(() => {
        const getInventor = async () =>{
            const res = await axios.get('http://localhost:5000/inventory')
            setFruits(res.data.inventory);
-           console.log(res.data.inventory);
        }
        getInventor()
-   },[fruits])
+   },[isChange])
 
    return [fruits, setFruits]
 };

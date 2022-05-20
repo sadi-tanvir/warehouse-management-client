@@ -6,13 +6,17 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { HelmetProvider } from "react-helmet-async";
+import store from "./redux/store"
+import { Provider } from 'react-redux'
 
 ReactDOM.render(
   <HelmetProvider>
     <React.StrictMode>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
+      </Provider>
     </React.StrictMode>
   </HelmetProvider>,
   document.getElementById("root")

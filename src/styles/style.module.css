@@ -5,3 +5,7 @@
     border-left: none;
     border-bottom: 4px solid #15803d;
 }
+
+.bgImage {
+    background-position: 50% 50%;
+}

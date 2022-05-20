@@ -34,14 +34,17 @@ const Header = () => {
           </Link>
 
           <div className="flex justify-center items-center">
-            <CustomLink className=" ml-2 md:ml-5" to="/">
+            <CustomLink className="ml-2 md:ml-5" to="/">
               Home
             </CustomLink>
-            <CustomLink className=" ml-2 md:ml-5" to="/inventory">
-              Inventory
+            <CustomLink className="ml-2 md:ml-5" to="/inventory">
+              Manage Inventories
             </CustomLink>
-            <CustomLink className=" ml-2 md:ml-5" to="/others">
-              others
+            <CustomLink className="ml-2 md:ml-5" to="/additem">
+              Add Item
+            </CustomLink>
+            <CustomLink className="ml-2 md:ml-5" to="/myitem">
+              My Item
             </CustomLink>
 
             {user ? (

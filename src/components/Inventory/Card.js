@@ -3,6 +3,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import useInventory from "../../hooks/useInventory";
 import Button from "../shared/re-usable-component/Button";
+import Swal from "sweetalert2"
+import { useDispatch } from "react-redux";
+import {IS_CHANGE} from "../../redux/actions/types"
 
 const Card = ({ fruit }) => {
   const [fruits, setFruits] = useInventory();
@@ -10,15 +13,25 @@ const Card = ({ fruit }) => {
   // router
   const navigate = useNavigate();
 
+    // redux
+    const dispatch = useDispatch();
 
   // handle delete inventory
   const deleteInventory = async () => {
       try {
-        const url = `http://localhost:5000/deleteItem/${_id}`;
-      const res = await axios.delete(url)
-      
-      // loading purpose
-      setFruits([...fruits, res.data._inventoryItem]);
+        Swal.fire({ title: 'Are you sure?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!' }).then((result) => {
+          if (result.isConfirmed) {
+            const deleteItem =async () => {
+              const url = `http://localhost:5000/deleteItem/${_id}`;
+              const res = await axios.delete(url)
+              // loading purpose
+              // setLoadFruit([res.data._inventoryItem]);
+              dispatch({type: IS_CHANGE})
+            }
+            deleteItem()
+          }
+      })
+        
       } catch (error) {
         console.log(error);
       }
@@ -29,7 +42,8 @@ const Card = ({ fruit }) => {
         <div className="rounded-lg shadow-lg bg-white">
           <img className="rounded-t-lg px-2 py-2" src={img} alt="" />
           <div className="p-6">
-            <h5 className="text-gray-900 text-xl font-medium mb-1">{name}</h5>
+            <h5 title={_id} className="text-gray-900 text-xl font-medium mb-1">id: {_id.slice(0,18)}...</h5>
+            <h5 className="text-gray-900 text-xl font-medium mb-1">Name: {name}</h5>
             <h6 className="text-gray-900 text-xl font-medium mb-1">
               Stock: {quantity} kg
             </h6>

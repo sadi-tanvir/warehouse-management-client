@@ -21,7 +21,7 @@ const InventoryDetails = () => {
       setFruit(res.data.inventoryItem);
     };
     getSingleInventory();
-  }, [fruit]);
+  }, []);
 
   // delivered item
   const deliveredItem = async (e) => {
@@ -69,7 +69,10 @@ const InventoryDetails = () => {
             />
             <div className="p-6">
               <h5 className="text-gray-900 text-xl font-medium mb-1">
-                {fruit?.name}
+                id: {fruit?._id}
+              </h5>
+              <h5 className="text-gray-900 text-xl font-medium mb-1">
+                Name: {fruit?.name}
               </h5>
               <h6 className="text-gray-900 text-xl font-medium mb-1">
                 Stock: {fruit?.quantity} kg
