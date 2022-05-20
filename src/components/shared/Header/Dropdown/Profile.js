@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Profile = () => {
+const Profile = ({img}) => {
   return (
     <>
       <Link
@@ -13,7 +13,7 @@ const Profile = () => {
         aria-expanded="false"
       >
         <img
-          src="https://mdbootstrap.com/img/new/avatars/2.jpg"
+          src={img}
           class="rounded-full"
           style={{ height: "25px", width: "25px" }}
           alt=""

@@ -28,11 +28,17 @@ const Register = () => {
     setUserInfo({ ...userInfo, [name]: value });
   };
 
+  if (user) {
+    navigate("/");
+  }
+
   //   handle submit
   const handleSubmit = async (e) => {
-      e.preventDefault()
+    e.preventDefault();
     const { name, email, password } = userInfo;
-    createUserWithEmailAndPassword(email, password,{sendEmailVerification:true});
+    createUserWithEmailAndPassword(email, password, {
+      sendEmailVerification: true,
+    });
   };
   return (
     <>

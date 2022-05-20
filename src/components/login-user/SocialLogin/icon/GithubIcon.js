@@ -1,9 +1,10 @@
 import React from "react";
 
-const GithubIcon = () => {
+const GithubIcon = ({ onClick }) => {
   return (
     <>
       <button
+        onClick={onClick}
         type="button"
         data-mdb-ripple="true"
         data-mdb-ripple-color="light"

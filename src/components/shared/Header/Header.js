@@ -1,15 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomLink from "./CustomLink/CustomLink";
 import Profile from "./Dropdown/Profile";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { signOut } from 'firebase/auth';
+import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
 import Button from "../re-usable-component/Button";
+import emptyAvatar from "../../../images/empty-avatar.png";
 
 const Header = () => {
+  // router
+  const navigate = useNavigate();
+
   // firebase
   const [user, loading, error] = useAuthState(auth);
+
+  // handle signout
+  const handleSignOut = () => {
+    signOut(auth)
+    navigate('/login')
+  } 
 
   return (
     <>
@@ -33,14 +43,20 @@ const Header = () => {
             <CustomLink className=" ml-2 md:ml-5" to="/others">
               others
             </CustomLink>
-            <div className="dropdown relative ml-2 md:ml-5">
-              <Profile />
-            </div>
 
             {user ? (
-              <Button onClick={() => signOut(auth)} btnClass="inline-block px-6 ml-3" btnColor="slate">
-                Logout
-              </Button>
+              <>
+                <div className="dropdown relative ml-2 md:ml-5">
+                  <Profile img={user?.photoURL ? user.photoURL : emptyAvatar} />
+                </div>
+                <Button
+                  onClick={handleSignOut}
+                  btnClass="inline-block px-6 ml-3"
+                  btnColor="slate"
+                >
+                  Logout
+                </Button>
+              </>
             ) : (
               <>
                 <CustomLink className=" ml-2 md:ml-5" to="/register">

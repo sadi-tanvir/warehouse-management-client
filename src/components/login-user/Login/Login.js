@@ -26,6 +26,10 @@ const Login = () => {
       error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    if(user){
+      navigate('/')
+    }
+
     //   handle change
     const handleAddChange = (e) => {
       const { name, value } = e.target;
