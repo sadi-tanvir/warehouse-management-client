@@ -36,7 +36,7 @@ const MyItem = () => {
         {/* showing inventories */}
         <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {myItem.map((fruit) => (
-            <Card fruit={fruit} />
+            <Card key={fruit._id} fruit={fruit} />
           ))}
         </div>
       </section>

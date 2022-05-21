@@ -59,18 +59,18 @@ const Inventory = () => {
         {/* showing inventories */}
         <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {fruits?.map((fruit) => (
-            <Card fruit={fruit} />
+            <Card key={fruit._id} fruit={fruit} />
           ))}
         </div>
 
         <div className="w-full mt-5 flex justify-center items-center">
           {
             [...Array(count).keys()].map(num => {
-              return  <button onClick={() => setPage(num)} className={`px-3 py-2 ml-2 rounded text-white font-bold ${num === page ? 'bg-green-700':'bg-slate-400 '}`}>{num+1}</button>
+              return  <button key={num} onClick={() => setPage(num)} className={`px-3 py-2 ml-2 rounded text-white font-bold ${num === page ? 'bg-green-700':'bg-slate-400 '}`}>{num+1}</button>
             })
           }
 
-            <select onChange={(e) => setSize(e.target.value)} style={{width: '70px'}} class="form-select ml-5" aria-label="Default select example">
+            <select onChange={(e) => setSize(e.target.value)} style={{width: '70px'}} className="form-select ml-5" aria-label="Default select example">
               <option value="5" selected >5</option>
               <option value="10">10</option>
               <option value="15">15</option>

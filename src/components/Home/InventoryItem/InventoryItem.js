@@ -25,7 +25,7 @@ const navigate = useNavigate()
       </h1>
       <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
         {
-            fruits.map(fruit => <Card fruit={fruit} />)
+            fruits.map(fruit => <Card key={fruit._id} fruit={fruit} />)
         }
       </div>
       <button

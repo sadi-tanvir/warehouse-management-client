@@ -58,7 +58,7 @@ const Header = () => {
                 <div className="dropdown relative ml-2 md:ml-5">
                   <img
                     src={user?.photoURL ? user.photoURL : emptyAvatar}
-                    class="rounded-full"
+                    className="rounded-full"
                     style={{ height: "30px", width: "30px" }}
                     alt=""
                     loading="lazy"

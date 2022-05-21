@@ -8,10 +8,10 @@ const GithubIcon = ({ onClick }) => {
         type="button"
         data-mdb-ripple="true"
         data-mdb-ripple-color="light"
-        class="inline-block p-2 bg-slate-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
+        className="inline-block p-2 bg-slate-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
       >
         <svg
-          class="w-5 h-5"
+          className="w-5 h-5"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 496 512"

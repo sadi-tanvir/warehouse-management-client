@@ -5,7 +5,7 @@ const Profile = ({img}) => {
   return (
     <>
       <Link
-        class="dropdown-toggle flex items-center hidden-arrow"
+        className="dropdown-toggle flex items-center hidden-arrow"
         to="#"
         id="dropdownMenuButton2"
         role="button"
@@ -14,19 +14,19 @@ const Profile = ({img}) => {
       >
         <img
           src={img}
-          class="rounded-full"
+          className="rounded-full"
           style={{ height: "25px", width: "25px" }}
           alt=""
           loading="lazy"
         />
       </Link>
       <ul
-        class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+        className="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
         aria-labelledby="dropdownMenuButton2"
       >
         <li>
           <Link
-            class=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+            className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
             to="#"
           >
             Action
@@ -34,7 +34,7 @@ const Profile = ({img}) => {
         </li>
         <li>
           <Link
-            class=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+            className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
             to="#"
           >
             Another action
@@ -42,7 +42,7 @@ const Profile = ({img}) => {
         </li>
         <li>
           <Link
-            class=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+            className=" dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
             to="#"
           >
             Something else here

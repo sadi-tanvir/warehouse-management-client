@@ -45,13 +45,13 @@ const SocialLogin = () => {
         <p className="text-danger mt-5">Error: {githubError?.message}</p>
       )}
       {/* {googleError && <small className="mt-10 inline-block text-red-600">{googleError}</small>} */}
-      <div class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
-        <p class="text-center font-semibold mx-4 mb-0">Or Login With</p>
+      <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
+        <p className="text-center font-semibold mx-4 mb-0">Or Login With</p>
       </div>
 
       {/* social login */}
-      <div class="w-full flex justify-center items-center">
-        <div class="flex flex-row items-center justify-center lg:justify-start">
+      <div className="w-full flex justify-center items-center">
+        <div className="flex flex-row items-center justify-center lg:justify-start">
           {/* google icon */}
           <GoogleIcon onClick={handleGoogleSignIn} />
 
