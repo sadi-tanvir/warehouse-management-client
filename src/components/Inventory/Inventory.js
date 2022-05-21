@@ -7,7 +7,7 @@ import ReactHelmet from "../shared/ReactHelmet/ReactHelmet";
 import { apiBaseUrl } from "../utils/apiBaseUrl";
 
 const Inventory = () => {
-  const [fruits, setFruits] = useInventory();
+  const [fruits, setFruits] = useState([]);
   // state
   const [count, setCount] = useState("");
   const [size, setSize] = useState(5);
@@ -28,7 +28,7 @@ const Inventory = () => {
   // get data from server
   useEffect(() => {
     const getInventor = async () =>{
-      const res = await axios.get(`http://localhost:5000/inventory?page=${page}&size=${size}`)
+      const res = await axios.get(`${apiBaseUrl}/inventory?page=${page}&size=${size}`)
       setFruits(res.data.inventory);
   }
   getInventor()

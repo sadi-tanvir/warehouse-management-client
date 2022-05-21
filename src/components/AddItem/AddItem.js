@@ -6,6 +6,7 @@ import auth from "../../firebase.init";
 import useInventory from "../../hooks/useInventory";
 import Input from "../shared/re-usable-component/Input";
 import ReactHelmet from "../shared/ReactHelmet/ReactHelmet";
+import {apiBaseUrl} from "../utils/apiBaseUrl"
 
 const AddItem = () => {
   // firebase
@@ -34,7 +35,7 @@ const AddItem = () => {
     e.preventDefault();
     try {
       const { email,name, img, description, quantity, price, supplier } = inventory;
-      const url = `http://localhost:5000/addInventory`;
+      const url = `${apiBaseUrl}/addInventory`;
       const res = await axios.post(url, {
         email,
         name,

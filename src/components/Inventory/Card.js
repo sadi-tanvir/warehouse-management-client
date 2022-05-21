@@ -6,6 +6,7 @@ import Button from "../shared/re-usable-component/Button";
 import Swal from "sweetalert2"
 import { useDispatch } from "react-redux";
 import {IS_CHANGE} from "../../redux/actions/types"
+import { apiBaseUrl } from "../utils/apiBaseUrl";
 
 const Card = ({ fruit }) => {
   const [fruits, setFruits] = useInventory();
@@ -22,7 +23,7 @@ const Card = ({ fruit }) => {
         Swal.fire({ title: 'Are you sure?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!' }).then((result) => {
           if (result.isConfirmed) {
             const deleteItem =async () => {
-              const url = `http://localhost:5000/deleteItem/${_id}`;
+              const url = `${apiBaseUrl}/deleteItem/${_id}`;
               const res = await axios.delete(url)
               // loading purpose
               // setLoadFruit([res.data._inventoryItem]);

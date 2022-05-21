@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useInventory from "../../../hooks/useInventory";
+import { apiBaseUrl } from "../../utils/apiBaseUrl";
 import Card from "./Card";
 
 const InventoryItem = () => {
@@ -10,7 +11,7 @@ const InventoryItem = () => {
 
   useEffect(() => {
     const getInventor = async () =>{
-        const res = await axios.get('http://localhost:5000/homeInventory')
+        const res = await axios.get(`${apiBaseUrl}/homeInventory`)
         setFruits(res.data.inventory);
     }
     getInventor()

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios"
 import { useSelector } from "react-redux";
+import { apiBaseUrl } from '../components/utils/apiBaseUrl';
 
 const useInventory = () => {
     const [fruits, setFruits] = useState([])
@@ -8,7 +9,7 @@ const useInventory = () => {
 
    useEffect(() => {
        const getInventor = async () =>{
-           const res = await axios.get('http://localhost:5000/inventory')
+           const res = await axios.get(`${apiBaseUrl}/inventory`)
            setFruits(res.data.inventory);
        }
        getInventor()

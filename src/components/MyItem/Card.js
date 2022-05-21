@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useSelector, useDispatch } from "react-redux";
 import {IS_CHANGE} from "../../redux/actions/types"
+import { apiBaseUrl } from "../utils/apiBaseUrl";
 
 const Card = ({ fruit }) => {
   const { _id, name, img, description, quantity, price, supplier } = fruit;
@@ -27,7 +28,7 @@ const Card = ({ fruit }) => {
       }).then((result) => {
         if (result.isConfirmed) {
           const deleteItem = async () => {
-            const url = `http://localhost:5000/deleteItem/${_id}`;
+            const url = `${apiBaseUrl}/deleteItem/${_id}`;
             const res = await axios.delete(url);
             dispatch({type: IS_CHANGE})
           };

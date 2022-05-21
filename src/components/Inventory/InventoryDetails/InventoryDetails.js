@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import classes from "../../../styles/style.module.css";
 import Button from "../../shared/re-usable-component/Button";
+import { apiBaseUrl } from "../../utils/apiBaseUrl";
 
 const InventoryDetails = () => {
   // state
@@ -16,7 +17,7 @@ const InventoryDetails = () => {
   // getting data from server
   useEffect(() => {
     const getSingleInventory = async () => {
-      const url = `http://localhost:5000/inventory/item?id=${inventoryId}`;
+      const url = `${apiBaseUrl}/inventory/item?id=${inventoryId}`;
       const res = await axios.get(url);
       setFruit(res.data.inventoryItem);
     };
@@ -25,7 +26,7 @@ const InventoryDetails = () => {
 
   // delivered item
   const deliveredItem = async (e) => {
-    const url = `http://localhost:5000/delivered/${inventoryId}`;
+    const url = `${apiBaseUrl}/delivered/${inventoryId}`;
     const res = await axios.post(url);
     setFruit(res.data.inventoryItem);
   };
@@ -33,7 +34,7 @@ const InventoryDetails = () => {
   // add stock item
   const increaseStock = async (e) => {
     e.preventDefault();
-    const url = `http://localhost:5000/increase/${inventoryId}`;
+    const url = `${apiBaseUrl}/increase/${inventoryId}`;
     const res = await axios.post(url, {
       quantity: parseInt(updateQty),
     });

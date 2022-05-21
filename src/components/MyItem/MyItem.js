@@ -5,6 +5,7 @@ import auth from "../../firebase.init";
 import Card from "./Card";
 import { useSelector } from "react-redux";
 import ReactHelmet from "../shared/ReactHelmet/ReactHelmet";
+import { apiBaseUrl } from "../utils/apiBaseUrl";
 
 const MyItem = () => {
   const [myItem, setMyItem] = useState([]);
@@ -18,7 +19,7 @@ const MyItem = () => {
   useEffect(() => {
     const getInventor = async () => {
       const res = await axios.get(
-        `http://localhost:5000/myInventory?email=${user.email}`
+        `${apiBaseUrl}/myInventory?email=${user.email}`
       );
       setMyItem(res.data.inventory);
     };
