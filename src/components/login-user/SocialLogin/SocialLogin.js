@@ -1,10 +1,13 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import {
   useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import { apiBaseUrl } from "../../utils/apiBaseUrl";
+import setAuthToken from "../../utils/setAuthToken";
 import GithubIcon from "./icon/GithubIcon";
 import GoogleIcon from "./icon/GoogleIcon";
 
@@ -26,6 +29,12 @@ const SocialLogin = () => {
     navigate(from, { replace: true });
   }
 
+  // handle google signin
+  const handleGoogleSignIn = async () => {
+    await signInWithGoogle()
+    
+  }
+
   return (
     <>
       {/* error message */}
@@ -44,7 +53,7 @@ const SocialLogin = () => {
       <div class="w-full flex justify-center items-center">
         <div class="flex flex-row items-center justify-center lg:justify-start">
           {/* google icon */}
-          <GoogleIcon onClick={() => signInWithGoogle()} />
+          <GoogleIcon onClick={handleGoogleSignIn} />
 
           {/* github icon */}
           <GithubIcon onClick={() => signInWithGithub()} />

@@ -1,10 +1,36 @@
-import React from "react";
-import Input from "./Input";
+import React, { useState } from "react";
+import Input from "../../shared/re-usable-component/Input";
+import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
+import { toast } from "react-toastify";
 
-const Modal = ({children}) => {
+const ResetPassword = () => {
+  const [email, setEmail] = useState("");
+
+  // firebase
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
+
+  // reset password
+  const resetPassword = async (e) => {
+    e.preventDefault();
+    await sendPasswordResetEmail(email);
+    toast("Sent email")
+  };
   return (
     <div>
-      {/* <!-- Modal --> */}
+      <p className="text-sm font-semibold mt-2 pt-1 mb-0 ml-5">
+        Forgot Password ?
+        <span
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          href="#"
+          className="text-green-600 cursor-pointer hover:text-green-700 focus:text-green-700 transition duration-200 ease-in-out ml-1"
+        >
+          reset
+        </span>
+      </p>
+
       <div
         class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModal"
@@ -31,9 +57,15 @@ const Modal = ({children}) => {
             <div class="modal-body relative p-4">
               {/* modal body start */}
               <div className="px-3">
-
-                {children}
-                
+                <form>
+                  <Input
+                    onChange={(e) => setEmail(e.target.value)}
+                    name="email"
+                    divClass="mb-6"
+                    type="email"
+                    placeholder="Email address"
+                  />
+                </form>
               </div>
               {/* modal body end */}
             </div>
@@ -46,7 +78,8 @@ const Modal = ({children}) => {
                 Close
               </button>
               <button
-                type="submit"
+                onClick={resetPassword}
+                type="button"
                 class="px-6 py-2.5 bg-green-700 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-900 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-900 active:shadow-lg transition duration-150 ease-in-out ml-1"
                 data-bs-dismiss="modal"
               >
@@ -60,4 +93,4 @@ const Modal = ({children}) => {
   );
 };
 
-export default Modal;
+export default ResetPassword;

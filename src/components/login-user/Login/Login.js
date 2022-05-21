@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios"
 import { apiBaseUrl } from "../../utils/apiBaseUrl";
 import setAuthToken from "../../utils/setAuthToken";
+import ResetPassword from "../ResetPassword/ResetPassword";
 
 const Login = () => {
     // state
@@ -112,7 +113,12 @@ const Login = () => {
                     </Link>
                   </p>
                 </div>
+
+                {/* reset password */}
+                  <ResetPassword />
+                {/* error message */}
                   {errorElement}
+
                 {/* social login */}
                 <SocialLogin />
               </form>

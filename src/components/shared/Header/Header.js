@@ -23,6 +23,7 @@ const Header = () => {
     localStorage.clear()
     setAuthToken(false)
   };
+  
 
   return (
     <>

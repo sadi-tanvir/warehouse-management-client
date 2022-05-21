@@ -11,11 +11,10 @@ const MyItem = () => {
 
   const { isChange } = useSelector((state) => state.globalReducer);
 
-  console.log(`this is from global reducer`, isChange);
 
   // firebase
   const [user, loading, error] = useAuthState(auth);
-  console.log(myItem);
+  
   useEffect(() => {
     const getInventor = async () => {
       const res = await axios.get(
@@ -29,7 +28,7 @@ const MyItem = () => {
   return (
     <>
       <ReactHelmet title="My Item" />
-      <section className="mt-10 w-full">
+      <section className="mt-10 w-full min-h-screen">
         <h1 className="text-center my-5 text-5xl capitalize font-bold uppercase text-green-700">
           My Inventory Items
         </h1>

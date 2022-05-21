@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useInventory from "../../hooks/useInventory";
 import Card from "./Card";
-import Modal from "../shared/re-usable-component/Modal";
-import Input from "../shared/re-usable-component/Input";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ReactHelmet from "../shared/ReactHelmet/ReactHelmet";
+import { apiBaseUrl } from "../utils/apiBaseUrl";
 
 const Inventory = () => {
   const [fruits, setFruits] = useInventory();
+  // state
+  const [count, setCount] = useState("");
+  const [size, setSize] = useState(5);
+  const [page, setPage] = useState(0)
 
+  // router
   const navigate = useNavigate();
+
+  // get document count
+  useEffect(() => {
+    axios.get(`${apiBaseUrl}/inventoryCount`).then((res) => {
+      const count = res.data.count;
+      const dividedCount = Math.ceil(count / 10);
+      setCount(dividedCount);
+    });
+  }, []);
+
+  // get data from server
+  useEffect(() => {
+    const getInventor = async () =>{
+      const res = await axios.get(`http://localhost:5000/inventory?page=${page}&size=${size}`)
+      setFruits(res.data.inventory);
+  }
+  getInventor()
+  },[page,size])
+
 
   return (
     <>
@@ -35,9 +58,24 @@ const Inventory = () => {
 
         {/* showing inventories */}
         <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {fruits.map((fruit) => (
+          {fruits?.map((fruit) => (
             <Card fruit={fruit} />
           ))}
+        </div>
+
+        <div className="w-full mt-5 flex justify-center items-center">
+          {
+            [...Array(count).keys()].map(num => {
+              return  <button onClick={() => setPage(num)} className={`px-3 py-2 ml-2 rounded text-white font-bold ${num === page ? 'bg-green-700':'bg-slate-400 '}`}>{num+1}</button>
+            })
+          }
+
+            <select onChange={(e) => setSize(e.target.value)} style={{width: '70px'}} class="form-select ml-5" aria-label="Default select example">
+              <option value="5" selected >5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20 ">20</option>
+            </select>
         </div>
       </section>
     </>

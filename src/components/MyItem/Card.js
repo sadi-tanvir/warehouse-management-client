@@ -43,7 +43,7 @@ const Card = ({ fruit }) => {
     <>
       <div className="flex justify-center">
         <div className="rounded-lg shadow-lg bg-white">
-          <img className="rounded-t-lg px-2 py-2" src={img} alt="" />
+          <img  style={{maxHeight: '250px'}} className="rounded-t-lg px-2 py-2" src={img} alt="" />
           <div className="p-6">
             <h5 className="text-gray-900 text-xl font-medium mb-1">{name}</h5>
             <h6 className="text-gray-900 text-xl font-medium mb-1">
