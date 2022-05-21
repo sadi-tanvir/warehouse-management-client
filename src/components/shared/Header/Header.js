@@ -7,6 +7,7 @@ import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
 import Button from "../re-usable-component/Button";
 import emptyAvatar from "../../../images/empty-avatar.png";
+import setAuthToken from "../../utils/setAuthToken";
 
 const Header = () => {
   // router
@@ -17,9 +18,11 @@ const Header = () => {
 
   // handle signout
   const handleSignOut = () => {
-    signOut(auth)
-    navigate('/login')
-  } 
+    signOut(auth);
+    navigate("/login");
+    localStorage.clear()
+    setAuthToken(false)
+  };
 
   return (
     <>
@@ -33,24 +36,32 @@ const Header = () => {
             />
           </Link>
 
-          <div className="flex justify-center items-center">
+          <div className="flex flex-wrap justify-center items-center">
             <CustomLink className="ml-2 md:ml-5" to="/">
               Home
             </CustomLink>
-            <CustomLink className="ml-2 md:ml-5" to="/inventory">
-              Manage Inventories
+            <CustomLink className="ml-5 text-sm md:text-xl" to="/blog">
+              Blogs
             </CustomLink>
-            <CustomLink className="ml-2 md:ml-5" to="/additem">
-              Add Item
-            </CustomLink>
-            <CustomLink className="ml-2 md:ml-5" to="/myitem">
-              My Item
-            </CustomLink>
-
             {user ? (
               <>
+                <CustomLink className="ml-5 text-sm md:text-xl" to="/inventory">
+                  Manage Inventories
+                </CustomLink>
+                <CustomLink className="ml-5 text-sm md:text-xl" to="/additem">
+                  Add Item
+                </CustomLink>
+                <CustomLink className="ml-5 text-sm md:text-xl" to="/myitem">
+                  My Item
+                </CustomLink>
                 <div className="dropdown relative ml-2 md:ml-5">
-                  <Profile img={user?.photoURL ? user.photoURL : emptyAvatar} />
+                  <img
+                    src={user?.photoURL ? user.photoURL : emptyAvatar}
+                    class="rounded-full"
+                    style={{ height: "30px", width: "30px" }}
+                    alt=""
+                    loading="lazy"
+                  />
                 </div>
                 <Button
                   onClick={handleSignOut}

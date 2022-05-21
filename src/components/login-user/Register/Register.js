@@ -6,12 +6,17 @@ import Input from "../../shared/re-usable-component/Input";
 import Button from "../../shared/re-usable-component/Button";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import ReactHelmet from "../../shared/ReactHelmet/ReactHelmet";
+import axios from "axios";
+import { apiBaseUrl } from "../../utils/apiBaseUrl";
+import setAuthToken from "../../utils/setAuthToken";
 
 const Register = () => {
   // state
   const [userInfo, setUserInfo] = useState({
     name: "",
     email: "",
+    phone: "",
     password: "",
   });
 
@@ -32,17 +37,34 @@ const Register = () => {
     navigate("/");
   }
 
+  let errorElement;
+  if (error) {
+    errorElement = <p className="text-danger mt-5">Error: {error?.message}</p>;
+  }
+
   //   handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, password } = userInfo;
-    createUserWithEmailAndPassword(email, password, {
+    const { name, email, phone, password } = userInfo;
+    await createUserWithEmailAndPassword(email, password, {
       sendEmailVerification: true,
     });
+    const res = await axios.post(`${apiBaseUrl}/register`, {
+      name,
+      email,
+      phone,
+    });
+    // set value to localStorage
+    localStorage.setItem('user', JSON.stringify(res.data._user));
+    localStorage.setItem('accessToken', JSON.stringify(res.data.accessToken));
+
+    // set authentication token
+    setAuthToken(res.data.accessToken)
   };
   return (
     <>
-      <section className="h-screen">
+      <ReactHelmet title="Register" />
+      <section className="h-screen my-5 md:my-0">
         <div className="px-16 h-full text-gray-800">
           <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
             <div className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
@@ -67,6 +89,14 @@ const Register = () => {
                   divClass="mb-6"
                   type="email"
                   placeholder="Email address"
+                />
+
+                <Input
+                  onChange={handleAddChange}
+                  name="phone"
+                  divClass="mb-6"
+                  type="number"
+                  placeholder="Phone"
                 />
                 <Input
                   onChange={handleAddChange}
@@ -94,6 +124,9 @@ const Register = () => {
                     </Link>
                   </p>
                 </div>
+
+                {/* error massage */}
+                {errorElement}
 
                 {/* social login */}
                 <SocialLogin />

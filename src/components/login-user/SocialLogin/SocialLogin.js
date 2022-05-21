@@ -1,29 +1,41 @@
 import React from "react";
-import { useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import {
+  useSignInWithGithub,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import GithubIcon from "./icon/GithubIcon";
 import GoogleIcon from "./icon/GoogleIcon";
 
-
 const SocialLogin = () => {
   // google signin
-  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-console.log(googleUser);
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
 
-    // router
-    const navigate = useNavigate();
+  // router
+  const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   // github signin
-  const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
+  const [signInWithGithub, githubUser, githubLoading, githubError] =
+    useSignInWithGithub(auth);
 
-  if(googleUser || githubUser){
-    navigate('/')
+  if (googleUser || githubUser) {
+    navigate(from, { replace: true });
   }
 
   return (
     <>
-        {/* {googleError && <small className="mt-10 inline-block text-red-600">{googleError}</small>} */}
+      {/* error message */}
+      {googleError && (
+        <p className="text-danger mt-5">Error: {googleError?.message}</p>
+      )}
+      {githubError && (
+        <p className="text-danger mt-5">Error: {githubError?.message}</p>
+      )}
+      {/* {googleError && <small className="mt-10 inline-block text-red-600">{googleError}</small>} */}
       <div class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
         <p class="text-center font-semibold mx-4 mb-0">Or Login With</p>
       </div>

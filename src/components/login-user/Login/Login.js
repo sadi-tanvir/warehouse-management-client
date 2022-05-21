@@ -4,9 +4,15 @@ import classes from "../../../styles/style.module.css";
 import login from "../../../images/large_thumbnail -2.jpg";
 import Input from "../../shared/re-usable-component/Input";
 import Button from "../../shared/re-usable-component/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import ReactHelmet from "../../shared/ReactHelmet/ReactHelmet";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios"
+import { apiBaseUrl } from "../../utils/apiBaseUrl";
+import setAuthToken from "../../utils/setAuthToken";
 
 const Login = () => {
     // state
@@ -15,9 +21,7 @@ const Login = () => {
       password: "",
     });
 
-    // router
-    const navigate = useNavigate();
-
+    
     // firebase auth
     const [
       signInWithEmailAndPassword,
@@ -26,8 +30,19 @@ const Login = () => {
       error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    // router
+    const navigate = useNavigate();
+    let location = useLocation()
+    let from = location.state?.from?.pathname || "/";
+
+
     if(user){
-      navigate('/')
+      navigate(from, { replace: true });
+    }
+    let errorElement;
+    if (error) {
+      errorElement = <p className='text-danger mt-5'>Error: {error?.message}</p>
+      // toast(error?.message)
     }
 
     //   handle change
@@ -40,10 +55,19 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
       const { email, password } = userInfo;
-      signInWithEmailAndPassword(email, password);
+      await signInWithEmailAndPassword(email, password);
+      const res = await axios.post(`${apiBaseUrl}/login`, {email})
+      // set value to localStorage
+    localStorage.setItem('user', JSON.stringify(res.data._user));
+    localStorage.setItem('accessToken', JSON.stringify(res.data.accessToken));
+
+    // set authentication token
+    setAuthToken(res.data.accessToken)
     };
   return (
     <>
+    {/* <ToastContainer /> */}
+      <ReactHelmet title="Login" />
       <section className="h-screen">
         <div className="px-16 h-full text-gray-800">
           <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
@@ -88,7 +112,7 @@ const Login = () => {
                     </Link>
                   </p>
                 </div>
-
+                  {errorElement}
                 {/* social login */}
                 <SocialLogin />
               </form>

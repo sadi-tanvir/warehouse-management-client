@@ -1,11 +1,24 @@
+import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Card = ({ fruit }) => {
   const { _id, name, img, description, quantity, price, supplier } = fruit;
 
   // router
   const navigate = useNavigate()
+
+  const handleStockUpdate = () => {
+    
+    if(axios.defaults.headers.common['x-access-token'] == JSON.parse(localStorage.getItem('accessToken'))){
+
+      navigate(`/inventory/${_id}`)
+    }else{
+      toast('Unauthorized User')
+    }
+  }
+
   return (
     <>
       <div className="flex justify-center">
@@ -24,7 +37,7 @@ const Card = ({ fruit }) => {
               {description.slice(0, 120)}...
             </p>
             <button
-            onClick={() => navigate(`/inventory/${_id}`)}
+            onClick={handleStockUpdate}
               type="button"
               className="block w-full mx-auto py-2 font-bold bg-green-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out"
             >

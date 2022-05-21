@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import useInventory from "../../hooks/useInventory";
 import Input from "../shared/re-usable-component/Input";
+import ReactHelmet from "../shared/ReactHelmet/ReactHelmet";
 
 const AddItem = () => {
   // firebase
@@ -52,10 +54,12 @@ const AddItem = () => {
       });
     } catch (error) {
       console.log(error);
+      toast(error.response.data.message)
     }
   };
   return (
     <>
+      <ReactHelmet title="Add" />
       <div className="w-full flex flex-col justify-center items-center">
         <form onSubmit={handleAddItem} className="w-6/12 shadow mt-10 px-5 pt-5" action="">
         <h1 className='mb-10 uppercase text-4xl font-bold text-green-700 mx-auto'>Add a new item</h1>
