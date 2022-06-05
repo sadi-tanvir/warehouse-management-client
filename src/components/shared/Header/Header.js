@@ -41,9 +41,6 @@ const Header = () => {
             <CustomLink className="ml-2 md:ml-5" to="/">
               Home
             </CustomLink>
-            <CustomLink className="ml-5 text-sm md:text-xl" to="/blog">
-              Blogs
-            </CustomLink>
             {user ? (
               <>
                 <CustomLink className="ml-5 text-sm md:text-xl" to="/inventory">

@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import Error404 from "./components/404/Error404";
 import AddItem from "./components/AddItem/AddItem";
-import Blogs from "./components/Blog/Blogs";
 import Home from "./components/Home/Home";
 import Inventory from "./components/Inventory/Inventory";
 import InventoryDetails from "./components/Inventory/InventoryDetails/InventoryDetails";
@@ -46,7 +45,6 @@ const App = () => {
             <MyItem />
           </RequireAuth>
         } />
-        <Route path="/blog" element={<Blogs />} />
         <Route path="/login" element={
           <CheckAuth>
             <Login />
